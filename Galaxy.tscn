@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh4fi4axj6a6h"]
+
+[ext_resource type="Script" path="res://GalacticController.gd" id="1_p65fk"]
+[ext_resource type="PackedScene" uid="uid://brvurbd8fwxxy" path="res://Utility/Camera.tscn" id="2_cgr84"]
+
+[node name="SceneController" type="Node"]
+
+[node name="GalacticCore" type="Node3D" parent="." groups=["GalacticCore"]]
+script = ExtResource("1_p65fk")
+
+[node name="CameraNode" parent="GalacticCore" instance=ExtResource("2_cgr84")]

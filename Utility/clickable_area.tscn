@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovarkqfbugfq"]
+
+[ext_resource type="Script" path="res://Utility/clickable_area.gd" id="1_xvy18"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6im1c"]
+radius = 10.0
+
+[node name="ClickableArea" type="Area3D" groups=["Clickable"]]
+script = ExtResource("1_xvy18")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6im1c")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

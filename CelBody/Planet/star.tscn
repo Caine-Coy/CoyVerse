@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://oxyraoya37o7"]
+
+[ext_resource type="Script" path="res://CelBody/CelestialBody.gd" id="1_8t758"]
+[ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="2_e2hi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bf4x"]
+albedo_color = Color(0.921569, 1, 0.521569, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_on_uv2 = true
+rim_enabled = true
+rim_tint = 1.0
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+grow_amount = 16.0
+
+[node name="Barycentre" type="Node3D"]
+
+[node name="Star" type="Node3D" parent="."]
+script = ExtResource("1_8t758")
+
+[node name="Body" type="CSGSphere3D" parent="Star"]
+unique_name_in_owner = true
+gi_mode = 2
+use_collision = true
+radius = 25.0
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_8bf4x")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Star/Body"]
+light_color = Color(1, 1, 0.698039, 1)
+light_energy = 16.0
+light_size = 25.0
+shadow_enabled = true
+shadow_bias = 1.0
+shadow_normal_bias = 1.5
+omni_range = 10000.0
+omni_shadow_mode = 0
+
+[node name="ClickableArea" parent="Star/Body" instance=ExtResource("2_e2hi4")]
+unique_name_in_owner = true
+
+[editable path="Star/Body/ClickableArea"]

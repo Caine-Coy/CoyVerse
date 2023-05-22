@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnogisdahiyqm"]
+
+[ext_resource type="Script" path="res://CelBody/CelestialBody.gd" id="1_ry6sy"]
+[ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="2_cl000"]
+
+[node name="Barycentre" type="Node3D"]
+
+[node name="Planet" type="Node3D" parent="." groups=["Planet"]]
+script = ExtResource("1_ry6sy")
+
+[node name="Body" type="CSGSphere3D" parent="Planet"]
+unique_name_in_owner = true
+gi_mode = 2
+calculate_tangents = false
+radius = 10.0
+radial_segments = 50
+rings = 50
+
+[node name="ClickableArea" parent="Planet/Body" instance=ExtResource("2_cl000")]
+unique_name_in_owner = true
+
+[editable path="Planet/Body/ClickableArea"]

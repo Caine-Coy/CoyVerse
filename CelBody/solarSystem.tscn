@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch1cfbqp2586m"]
+
+[ext_resource type="Script" path="res://SolarSysController.gd" id="1_4tf07"]
+
+[node name="Solar Root" type="Node3D"]
+script = ExtResource("1_4tf07")
