@@ -49,3 +49,61 @@ text = "Type"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InfoBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="DateBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -252.0
+offset_bottom = 55.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="DateBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="DateBox/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DateBox/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="DateLabel" type="Label" parent="DateBox/MarginContainer/HBoxContainer3/HBoxContainer"]
+layout_mode = 2
+text = "1/1/2100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DateBox/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+text = "||"
+
+[node name="PlayButton" type="Button" parent="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+text = "⏵"
+
+[node name="FasterSpeedButton" type="Button" parent="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+text = "⏵⏵"
+
+[node name="FastestSpeedButton" type="Button" parent="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+text = "⏵⏵⏵"
+
+[connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/PauseButton" to="." method="_on_pause_button_button_up"]
+[connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/FasterSpeedButton" to="." method="_on_faster_speed_button_button_up"]
+[connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/FastestSpeedButton" to="." method="_on_fastest_speed_button_button_up"]

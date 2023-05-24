@@ -6,6 +6,7 @@ class_name CelestialBody
 @onready var barycentre : Node3D = get_parent()
 @onready var system : Node3D #
 
+
 enum CelestialTypes{STAR,PLANET,MOON,ASTEROID}
 enum PlanetTypes{CONTINENTAL,WATER_OCEAN,ICE,MAGMA,BARREN}
 
@@ -26,7 +27,7 @@ func SetRadius(_radius):
 	radius = _radius
 	bodySurface.radius = _radius
 	collisionSurface.shape.set_radius(_radius)
-
+#Need to Calculate Rotation Speed
 func Orbit(delta):
 	barycentre.rotate(Vector3(0,1,0),rotationSpeed*delta)
 

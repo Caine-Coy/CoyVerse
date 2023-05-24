@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c04affwt4oxtp"]
+
+[ext_resource type="Script" path="res://CelBody/Civilisation/Components/Inventory.gd" id="1_80a2b"]
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_80a2b")

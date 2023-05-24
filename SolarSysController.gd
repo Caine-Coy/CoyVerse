@@ -1,6 +1,6 @@
 extends Node3D
 #GalacticCore
-@onready var galaxyController : Node = get_tree().get_nodes_in_group("GalacticCore")[0]
+@onready var galaxyController : Node3D = get_tree().get_nodes_in_group("GalacticCore")[0]
 #Scenes
 var starScene : PackedScene = load("res://CelBody/PrefabScenes/star.tscn")
 var planetScene : PackedScene = load("res://CelBody/PrefabScenes/planet.tscn")
@@ -47,7 +47,8 @@ func makePlanet(planetNum):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	Orbit(delta)
+	if not galaxyController.paused:
+		Orbit(delta)
 	pass
 
 func Orbit(delta):

@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 CoyDebug="*res://Utility/Autoloaded/CoyDebug.gd"
 CoyName="*res://Utility/Autoloaded/CoyName.gd"
 CoyFile="*res://Utility/Autoloaded/CoyFile.gd"
-CoyTimer="*res://Utility/Autoloaded/CoyTime.gd"
 
 [dotnet]
 
