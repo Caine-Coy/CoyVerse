@@ -2,8 +2,8 @@ extends Node3D
 #GalacticCore
 @onready var galaxyController : Node = get_tree().get_nodes_in_group("GalacticCore")[0]
 #Scenes
-var starScene : PackedScene = load("res://CelBody/Planet/star.tscn")
-var planetScene : PackedScene = load("res://CelBody/Planet/planet.tscn")
+var starScene : PackedScene = load("res://CelBody/PrefabScenes/star.tscn")
+var planetScene : PackedScene = load("res://CelBody/PrefabScenes/planet.tscn")
 
 var starCount
 var rotationSpeed = 1
@@ -22,8 +22,10 @@ func _ready():
 
 func makeStar(radius):
 	star = starScene.instantiate()
+	
 	add_child(star)
 	star = star.get_child(0)
+	star.name = name
 	star.SetRadius(radius)
 
 func makePlanet(planetNum):
@@ -34,9 +36,8 @@ func makePlanet(planetNum):
 	planets.append(planet)
 	star.add_child(planetBary)
 	
-	planetBary.name = str(name," ",CoyName.IntToRoman(planetNum+1))
+	planet.name = str(name," ",CoyName.IntToRoman(planetNum+1))
 	planet.position.z = -((galaxyController.SCALE * planetNum) + (starRadius*4))
-	
 	planet.SetRadius(10)
 	planet.rotationSpeed = 0.01*planetNum
 	

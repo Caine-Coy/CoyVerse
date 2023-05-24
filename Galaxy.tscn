@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh4fi4axj6a6h"]
+[gd_scene load_steps=4 format=3 uid="uid://dh4fi4axj6a6h"]
 
 [ext_resource type="Script" path="res://GalacticController.gd" id="1_p65fk"]
 [ext_resource type="PackedScene" uid="uid://brvurbd8fwxxy" path="res://Utility/Camera.tscn" id="2_cgr84"]
+[ext_resource type="Script" path="res://ControlUi.gd" id="3_jming"]
 
 [node name="SceneController" type="Node"]
 
@@ -9,3 +10,37 @@
 script = ExtResource("1_p65fk")
 
 [node name="CameraNode" parent="GalacticCore" instance=ExtResource("2_cgr84")]
+
+[node name="DayTimer" type="Timer" parent="GalacticCore"]
+
+[node name="ControlUi" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("3_jming")
+
+[node name="InfoBox" type="Panel" parent="ControlUi"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -222.0
+offset_right = 321.0
+grow_vertical = 0
+
+[node name="ObjectName" type="Label" parent="ControlUi/InfoBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Name"
+
+[connection signal="update_infobox" from="GalacticCore/CameraNode" to="ControlUi" method="_on_update_infobox"]

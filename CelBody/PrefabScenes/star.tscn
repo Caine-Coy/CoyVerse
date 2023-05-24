@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://oxyraoya37o7"]
+[gd_scene load_steps=5 format=3 uid="uid://oxyraoya37o7"]
 
-[ext_resource type="Script" path="res://CelBody/CelestialBody.gd" id="1_8t758"]
-[ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="2_e2hi4"]
+[ext_resource type="Script" path="res://CelBody/CelestialBody.gd" id="1_mcdp7"]
+[ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="2_tpuit"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bf4x"]
 albedo_color = Color(0.921569, 1, 0.521569, 1)
@@ -15,10 +15,13 @@ backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
 grow_amount = 16.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mk8fp"]
+radius = 25.0
+
 [node name="Barycentre" type="Node3D"]
 
 [node name="Star" type="Node3D" parent="."]
-script = ExtResource("1_8t758")
+script = ExtResource("1_mcdp7")
 
 [node name="Body" type="CSGSphere3D" parent="Star"]
 unique_name_in_owner = true
@@ -39,7 +42,10 @@ shadow_normal_bias = 1.5
 omni_range = 10000.0
 omni_shadow_mode = 0
 
-[node name="ClickableArea" parent="Star/Body" instance=ExtResource("2_e2hi4")]
+[node name="ClickableArea" parent="Star/Body" instance=ExtResource("2_tpuit")]
 unique_name_in_owner = true
+
+[node name="Collider" parent="Star/Body/ClickableArea" index="0"]
+shape = SubResource("SphereShape3D_mk8fp")
 
 [editable path="Star/Body/ClickableArea"]

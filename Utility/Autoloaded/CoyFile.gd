@@ -6,7 +6,6 @@ func LoadFileCSV(_filePath:String):
 	else:
 		var file = FileAccess.open(_filePath,FileAccess.READ)
 		var json_string = file.get_csv_line()
-		var json = JSON.new()
 		return json_string
 
 func SaveToFileCSV(_data, _filePath:String):

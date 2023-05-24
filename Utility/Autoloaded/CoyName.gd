@@ -14,7 +14,6 @@ func GetStarName():
 			_name = starNames[i]
 	return _name
 
-#
 func IntToRoman(_number : int):
 	var _roman_numeral = ''
 	for i in range(_values.size()):

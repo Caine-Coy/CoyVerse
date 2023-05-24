@@ -16,6 +16,8 @@ var focusViewPreset : Vector3 = Vector3(0,10,0)
 var zoomLevel
 var currSelectedObject
 
+signal update_infobox(object : Node3D)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -25,8 +27,15 @@ func _process(delta):
 	_movement(delta)
 	_uiKeys()
 
-
 func _uiKeys():
+	if Input.is_action_just_released("ui_click"):
+		ScanClickables()
+			#Move Camera to selected object parent
+		if currSelectedObject!=null:
+			if currSelectedObject != get_parent_node_3d():
+				FollowObject(currSelectedObject)
+			
+	
 	if Input.is_action_pressed("deselect"):
 		if currSelectedObject != null && get_parent_node_3d() != galacticCore:
 			DetachView()
@@ -43,6 +52,7 @@ func _movement(delta):
 		camRotateNode.rotate(Vector3(1,0,0),tilt_dir*camRotDivisor)
 
 func _input(event):
+	#Zoom
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP && camera.position.z > camZoomMin:
 			camera.translate_object_local(Vector3(0,0,-1)*camera.position.z*camZoomMult)
@@ -50,17 +60,10 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN && camera.position.z < camZoomMax:
 			camera.translate_object_local(Vector3(0,0,1)*camera.position.z*camZoomMult)
 			zoomLevel = int(camera.position.z)
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			ScanClickables()
-			#Move Camera to selected object parent
-			if currSelectedObject!=null:
-				FollowObject(currSelectedObject)
-				
-	
 
 func object_selected(object):
 	currSelectedObject = object
-		
+	update_infobox.emit(currSelectedObject)
 	
 func DetachView():
 	var _pos = global_position
@@ -70,7 +73,6 @@ func DetachView():
 	global_position = _pos
 	
 func FollowObject(object):
-	
 	get_parent_node_3d().remove_child(get_node("."))
 	object.add_child(get_node("."))
 	position = focusViewPreset
