@@ -1,6 +1,6 @@
 extends Area3D
 
-signal object_selected()
+signal object_brushed()
 
 func _on_mouse_entered():
-	object_selected.emit(get_parent())
+	object_brushed.emit(get_parent())

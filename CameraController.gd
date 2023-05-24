@@ -11,10 +11,11 @@ extends Node3D
 @onready var camRotateNode : Node3D = $"CamRotateNode"
 @onready var galacticCore : Node3D = $".."
 
-var focusViewPreset : Vector3 = Vector3(0,10,0)
+var focusViewPreset : Vector3 = Vector3(0,0,0)
 
 var zoomLevel
 var currSelectedObject
+var currObjectChanged
 
 signal update_infobox(object : Node3D)
 
@@ -29,9 +30,10 @@ func _process(delta):
 
 func _uiKeys():
 	if Input.is_action_just_released("ui_click"):
-		ScanClickables()
 			#Move Camera to selected object parent
-		if currSelectedObject!=null:
+		if currSelectedObject!=null && currObjectChanged:
+			update_infobox.emit(currSelectedObject)
+			currObjectChanged = false
 			if currSelectedObject != get_parent_node_3d():
 				FollowObject(currSelectedObject)
 			
@@ -61,9 +63,11 @@ func _input(event):
 			camera.translate_object_local(Vector3(0,0,1)*camera.position.z*camZoomMult)
 			zoomLevel = int(camera.position.z)
 
-func object_selected(object):
+func object_brushed(object):
 	currSelectedObject = object
-	update_infobox.emit(currSelectedObject)
+	currObjectChanged = true
+	
+	
 	
 func DetachView():
 	var _pos = global_position
@@ -81,6 +85,10 @@ func FollowObject(object):
 func ScanClickables():
 	var clickables = get_tree().get_nodes_in_group("Clickable")
 	for i in range(clickables.size()):
-		if !clickables[i].object_selected.is_connected(object_selected):
-			clickables[i].object_selected.connect(object_selected)
+		if !clickables[i].object_brushed.is_connected(object_brushed):
+			clickables[i].object_brushed.connect(object_brushed)
 			
+
+
+func _on_galactic_core_galaxy_finished_loading():
+	ScanClickables()

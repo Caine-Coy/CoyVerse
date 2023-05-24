@@ -10,7 +10,7 @@ var rotationSpeed = 1
 var planetCount
 var starRadius = 25
 
-var star : Node3D
+var star : CelestialBody
 var planets = []
 
 # Called when the node enters the scene tree for the first time.
@@ -21,25 +21,29 @@ func _ready():
 		makePlanet(i)
 
 func makeStar(radius):
-	star = starScene.instantiate()
+	var starRoot = starScene.instantiate()
+	starRoot.add_to_group(name)
 	
-	add_child(star)
-	star = star.get_child(0)
+	add_child(starRoot)
+	star = starRoot.get_child(0)
+	star.add_to_group("Star")
 	star.name = name
-	star.SetRadius(radius)
 
 func makePlanet(planetNum):
 	var planetBary : Node3D = planetScene.instantiate()
 	var planet = planetBary.get_child(0)
 
 	planet.add_to_group(name)
+	planet.add_to_group("Planet")
 	planets.append(planet)
 	star.add_child(planetBary)
 	
+	
 	planet.name = str(name," ",CoyName.IntToRoman(planetNum+1))
+	planet.SetRandomPlanetType()
 	planet.position.z = -((galaxyController.SCALE * planetNum) + (starRadius*4))
-	planet.SetRadius(10)
 	planet.rotationSpeed = 0.01*planetNum
+	CoyDebug.Log(str("Made new planet ",planet.name," of type ", planet.planetType),CoyDebug.verbosityStates.ALL)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
