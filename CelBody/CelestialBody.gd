@@ -6,7 +6,6 @@ class_name CelestialBody
 @onready var barycentre : Node3D = get_parent()
 @onready var system : Node3D #
 
-
 enum CelestialTypes{STAR,PLANET,MOON,ASTEROID}
 enum PlanetTypes{CONTINENTAL,WATER_OCEAN,ICE,MAGMA,BARREN}
 
@@ -14,6 +13,7 @@ enum PlanetTypes{CONTINENTAL,WATER_OCEAN,ICE,MAGMA,BARREN}
 var planetType
 var radius
 var rotationSpeed = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	barycentre.name = name

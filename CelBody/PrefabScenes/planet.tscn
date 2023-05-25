@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnogisdahiyqm"]
+[gd_scene load_steps=4 format=3 uid="uid://3ahaag7fuutm"]
 
 [ext_resource type="Script" path="res://CelBody/CelestialBody.gd" id="1_ry6sy"]
 [ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="2_cl000"]
-[ext_resource type="PackedScene" uid="uid://da8b5tr7gy7tl" path="res://CelBody/Civilisation/civilisation.tscn" id="3_y4wr4"]
+[ext_resource type="PackedScene" uid="uid://ctbtgao7pjkne" path="res://CelBody/Civilisation/ColonyNode.tscn" id="3_y4wr4"]
 
 [node name="Barycentre" type="Node3D"]
 
@@ -21,6 +21,7 @@ rings = 50
 [node name="ClickableArea" parent="Planet/Body" instance=ExtResource("2_cl000")]
 unique_name_in_owner = true
 
-[node name="CivilisationNode" parent="Planet" instance=ExtResource("3_y4wr4")]
+[node name="ColonyPosition" parent="Planet" instance=ExtResource("3_y4wr4")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 10.0068, 0, 0)
 
 [editable path="Planet/Body/ClickableArea"]

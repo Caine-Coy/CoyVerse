@@ -5,7 +5,7 @@ extends Node3D
 @export_range(0,1) var camSpeedZoomMult = 0.05
 @export_range(0,1) var camZoomMult = 0.1
 @export var camZoomMax = 5000
-@export var camZoomMin = 3
+@export var camZoomMin = 0.1
 
 @onready var camera : Camera3D = $"CamRotateNode/Camera3D"
 @onready var camRotateNode : Node3D = $"CamRotateNode"
@@ -14,8 +14,9 @@ extends Node3D
 var focusViewPreset : Vector3 = Vector3(0,0,0)
 
 var zoomLevel
-var currSelectedObject
+var currSelectedObject : Node3D
 var currObjectChanged
+var colonyMode = false
 
 signal update_infobox(object : Node3D)
 
@@ -34,13 +35,18 @@ func _uiKeys():
 		if currSelectedObject!=null && currObjectChanged:
 			update_infobox.emit(currSelectedObject)
 			currObjectChanged = false
-			if currSelectedObject != get_parent_node_3d():
+			if currSelectedObject != get_parent_node_3d() && colonyMode == false:
 				FollowObject(currSelectedObject)
+				if currSelectedObject.is_in_group("Colony"):
+					CoyDebug.Log(str("Entered colony mode around ",currSelectedObject.get_parent()),CoyDebug.verbosityStates.ALL)
+					colonyMode = true
 			
 	
 	if Input.is_action_pressed("deselect"):
 		if currSelectedObject != null && get_parent_node_3d() != galacticCore:
 			DetachView()
+		if colonyMode:
+			colonyMode = false
 
 func _movement(delta):
 	var hor_dir = Input.get_vector("move_left","move_right","move_forward","move_backward")
@@ -67,8 +73,6 @@ func object_brushed(object):
 	currSelectedObject = object
 	currObjectChanged = true
 	
-	
-	
 func DetachView():
 	var _pos = global_position
 	var _rot = global_rotation
@@ -87,8 +91,6 @@ func ScanClickables():
 	for i in range(clickables.size()):
 		if !clickables[i].object_brushed.is_connected(object_brushed):
 			clickables[i].object_brushed.connect(object_brushed)
-			
-
 
 func _on_galactic_core_galaxy_finished_loading():
 	ScanClickables()

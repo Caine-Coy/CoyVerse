@@ -47,8 +47,70 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Type"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoBox/MarginContainer/VBoxContainer"]
+[node name="ColonyLabel" type="GridContainer" parent="InfoBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="PopLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Pop: 4"
+
+[node name="EnergyLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Energy: 69"
+
+[node name="BMatLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Basic Mat: 100"
+
+[node name="AMatLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Advanced Mat: 100"
+
+[node name="HydrogenLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "H2 Fuel: 5000L"
+
+[node name="FossilFuelLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Fossil Fuel: 1500L"
+
+[node name="Label7" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label8" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label9" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label10" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 
 [node name="DateBox" type="Panel" parent="."]
 layout_mode = 1

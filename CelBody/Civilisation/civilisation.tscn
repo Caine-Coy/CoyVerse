@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://da8b5tr7gy7tl"]
-
-[ext_resource type="Script" path="res://CelBody/Civilisation/PlanetEconController.gd" id="1_qs8fm"]
-[ext_resource type="PackedScene" uid="uid://c04affwt4oxtp" path="res://CelBody/Civilisation/Components/inventory.tscn" id="2_u3tvg"]
-
-[node name="Civilisation" type="Node3D"]
-script = ExtResource("1_qs8fm")
-
-[node name="Inventory" parent="." instance=ExtResource("2_u3tvg")]

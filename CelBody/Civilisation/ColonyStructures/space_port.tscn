@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://crjviy2o7hva7"]
+
+[ext_resource type="PackedScene" uid="uid://bovarkqfbugfq" path="res://Utility/clickable_area.tscn" id="1_t66py"]
+[ext_resource type="PackedScene" path="res://CelBody/Components/inventory.tscn" id="2_th20b"]
+[ext_resource type="PackedScene" uid="uid://x47iw47qycg1" path="res://CelBody/Civilisation/ColonyStructures/ColonyComponents/road_access_node.tscn" id="3_7jdfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxj72"]
+size = Vector3(1, 0.5, 1)
+
+[node name="SpacePort" type="CSGTorus3D" groups=["Colony"]]
+inner_radius = 0.25
+outer_radius = 0.5
+sides = 12
+ring_sides = 8
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.629511, 0, 0, 0, 0.0455305, 0, 0, 0, 0.659977, 0, 0, 0)
+
+[node name="ClickableArea" parent="." instance=ExtResource("1_t66py")]
+
+[node name="Collider" parent="ClickableArea" index="0"]
+shape = SubResource("BoxShape3D_hxj72")
+
+[node name="Inventory" parent="." instance=ExtResource("2_th20b")]
+
+[node name="RoadAccess" parent="." instance=ExtResource("3_7jdfh")]
+
+[editable path="ClickableArea"]

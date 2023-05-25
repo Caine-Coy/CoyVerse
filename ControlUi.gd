@@ -18,8 +18,9 @@ func _on_update_infobox(_object):
 	selectedObject  = _object.get_parent()
 	CoyDebug.Log(str(selectedObject.name," Requested Infobox Update"),CoyDebug.verbosityStates.ALL)
 	nameLabel.text = selectedObject.name
-	
 	SetTypeBox(selectedObject)
+	#~Get if colony
+	#if selectedObject.get_node
 
 func SetTypeBox(_object):
 	if selectedObject.is_in_group("Planet") or selectedObject.is_in_group("Star"):

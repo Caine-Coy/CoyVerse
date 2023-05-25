@@ -3,8 +3,8 @@ extends Node
 @onready var starNames = CoyFile.LoadFileCSV("res://CelBody/StarNames.json")
 var usedStarNames = []
 #Romaniser
-var _values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-var _symbols = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+var roman_numerals = {'M' : 1000, 'CM' : 90, 'D' : 500, 'CD' : 400, 'C' : 100, 'XC' : 90, 'L' : 50, 'XL' : 40, 'X' :10, 'IX' : 9, 'V' : 5, 'IV' : 4, 'I' : 1}
+var greek_letters = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi', 'Chi', 'Psi', 'Omega']
 
 func GetStarName():
 	var _name
@@ -16,8 +16,13 @@ func GetStarName():
 
 func IntToRoman(_number : int):
 	var _roman_numeral = ''
-	for i in range(_values.size()):
-		while _number >= _values[i]:
-			_roman_numeral += _symbols[i]
-			_number -= _values[i]
+	for key in roman_numerals:
+		while _number >= roman_numerals.get(key):
+			_roman_numeral += key
+			_number -= roman_numerals.get(key)
 	return _roman_numeral
+
+func IntToGreek(_number : int):
+	# Adjust the number to fit within the range of Greek letters
+	_number = (_number - 1) % 24
+	return greek_letters[_number]

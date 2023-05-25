@@ -38,7 +38,7 @@ func makePlanet(planetNum):
 	planets.append(planet)
 	star.add_child(planetBary)
 	
-	
+	planetBary.name = str(name," ",CoyName.IntToRoman(planetNum+1))
 	planet.name = str(name," ",CoyName.IntToRoman(planetNum+1))
 	planet.SetRandomPlanetType()
 	planet.position.z = -((galaxyController.SCALE * planetNum) + (starRadius*4))
