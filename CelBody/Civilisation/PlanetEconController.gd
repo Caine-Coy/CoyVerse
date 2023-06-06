@@ -3,10 +3,11 @@ extends Node3D
 #Times Thousand
 var population 
 @onready var planet = get_parent()
-@onready var planetInventory = $PlanetInventory
+@onready var planetInventory = $Inventory
 @onready var stockpiledInv = $SpacePort/Inventory
 
 func _ready():
+	#Needs running afterWorldgen. When Colony Creation is in
 	name = str(planet.name," Base ",CoyName.IntToGreek(1))
 func update():
 	pass

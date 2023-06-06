@@ -12,106 +12,6 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_smej1")
 
-[node name="InfoBox" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -222.0
-offset_right = 321.0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="InfoBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoBox/MarginContainer"]
-layout_mode = 2
-
-[node name="ObjectName" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-size_flags_vertical = 1
-text = "Name"
-horizontal_alignment = 1
-
-[node name="ObjectType" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Type"
-
-[node name="ColonyLabel" type="GridContainer" parent="InfoBox/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 2
-
-[node name="PopLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Pop: 4"
-
-[node name="EnergyLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Energy: 69"
-
-[node name="BMatLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Basic Mat: 100"
-
-[node name="AMatLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Advanced Mat: 100"
-
-[node name="HydrogenLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "H2 Fuel: 5000L"
-
-[node name="FossilFuelLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Fossil Fuel: 1500L"
-
-[node name="Label7" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
-[node name="Label8" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
-[node name="Label9" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
-[node name="Label10" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/ColonyLabel"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
 [node name="DateBox" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -165,7 +65,200 @@ text = "⏵⏵"
 layout_mode = 2
 text = "⏵⏵⏵"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -174.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InfoPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+mouse_filter = 2
+
+[node name="InfoMargin" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer/InfoPanel/InfoMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ObjectName" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 1
+text = "Name"
+horizontal_alignment = 1
+
+[node name="ObjectType" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox"]
+layout_mode = 2
+text = "Type"
+
+[node name="ColonyLabel" type="GridContainer" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="PopLabel" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="EnergyLabel" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="BMatLabel" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="AMatLabel" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="HydrogenLabel" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label9" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Label10" type="Label" parent="HBoxContainer/InfoPanel/InfoMargin/InfoBox/ColonyLabel"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainPanel" type="FlowContainer" parent="HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="CheatMenu" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu"]
+layout_mode = 2
+text = "Cheat Menu"
+horizontal_alignment = 1
+
+[node name="CheatBox" type="HBoxContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColonyCheatBox" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu/CheatBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu/CheatBox/ColonyCheatBox"]
+layout_mode = 2
+text = "Colony Cheats
+"
+
+[node name="ColonyCheats" type="GridContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu/CheatBox/ColonyCheatBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddPopButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu/CheatBox/ColonyCheatBox/ColonyCheats" groups=["ColonyUI"]]
+layout_mode = 2
+disabled = true
+text = "Add 10,000 Pop
+"
+
+[node name="BuildMenu" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu"]
+layout_mode = 2
+text = "Build Menu"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu"]
+layout_mode = 2
+tab_alignment = 1
+clip_tabs = false
+
+[node name="Infrastructure" type="FlowContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu/TabContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+alignment = 1
+
+[node name="BSpacePort" type="Button" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu/TabContainer/Infrastructure"]
+layout_mode = 2
+text = "Space Port
+"
+
+[node name="BRoad" type="Button" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu/TabContainer/Infrastructure"]
+layout_mode = 2
+text = "Road"
+
+[node name="Extraction" type="FlowContainer" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+alignment = 1
+
+[node name="BBMat" type="Button" parent="HBoxContainer/Panel/MarginContainer/MainPanel/BuildMenu/TabContainer/Extraction"]
+layout_mode = 2
+text = "Mine"
+
 [connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/PauseButton" to="." method="_on_pause_button_button_up"]
 [connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/PlayButton" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/FasterSpeedButton" to="." method="_on_faster_speed_button_button_up"]
 [connection signal="button_up" from="DateBox/MarginContainer/HBoxContainer3/HBoxContainer2/FastestSpeedButton" to="." method="_on_fastest_speed_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/Panel/MarginContainer/MainPanel/CheatMenu/CheatBox/ColonyCheatBox/ColonyCheats/AddPopButton" to="." method="_on_add_pop_button_button_up"]

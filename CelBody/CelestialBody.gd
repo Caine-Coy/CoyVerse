@@ -45,3 +45,6 @@ func GetCelestialTypeStr():
 
 func GetPlanetTypeStr():
 	return planetType.capitalize()
+
+func SpawnColony(_location):
+	pass

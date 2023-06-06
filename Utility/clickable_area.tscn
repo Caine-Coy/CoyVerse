@@ -11,4 +11,4 @@ script = ExtResource("1_xvy18")
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_6im1c")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
