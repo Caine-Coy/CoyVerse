@@ -5,6 +5,7 @@ class_name CelestialBody
 @onready var collisionSurface : CollisionShape3D = %ClickableArea/Collider
 @onready var barycentre : Node3D = get_parent()
 @onready var system : Node3D #
+@onready var galacticController = get_tree().get_first_node_in_group("GalacticCore")
 
 enum CelestialTypes{STAR,PLANET,MOON,ASTEROID}
 enum PlanetTypes{CONTINENTAL,WATER_OCEAN,ICE,MAGMA,BARREN}
@@ -12,12 +13,12 @@ enum PlanetTypes{CONTINENTAL,WATER_OCEAN,ICE,MAGMA,BARREN}
 @export var celestialType : CelestialTypes
 var planetType
 var radius
-var rotationSpeed = 0
-
+var orbitalSpeed
+var distanceFromStar
+var orbitalPeriod
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	barycentre.name = name
-	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	Orbit(delta)
@@ -27,9 +28,11 @@ func SetRadius(_radius):
 	radius = _radius
 	bodySurface.radius = _radius
 	collisionSurface.shape.set_radius(_radius)
+
 #Need to Calculate Rotation Speed
 func Orbit(delta):
-	barycentre.rotate(Vector3(0,1,0),rotationSpeed*delta)
+	if (not galacticController.paused):
+		barycentre.rotate(Vector3(0,1,0),(orbitalSpeed)*(delta*galacticController.speeds[-galacticController.speed]))
 
 func SetRandomPlanetType():
 	if celestialType == CelestialTypes.PLANET or celestialType == CelestialTypes.MOON:

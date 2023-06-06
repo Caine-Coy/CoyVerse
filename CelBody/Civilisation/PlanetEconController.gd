@@ -8,6 +8,6 @@ var population
 
 func _ready():
 	#Needs running afterWorldgen. When Colony Creation is in
-	name = str(planet.name," Base ",CoyName.IntToGreek(1))
+	name = str(planet.name," Base ",CoyUtils.IntToGreek(1))
 func update():
 	pass

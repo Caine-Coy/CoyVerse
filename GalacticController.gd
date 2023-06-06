@@ -2,6 +2,7 @@ extends Node3D
 
 var SolarScene : PackedScene = load("res://CelBody/solarSystem.tscn")
 #Godot Meters to AU
+#so 100M is 1 AU
 const SCALE = 100
 const systemCount = 1
 #Star System Planet Amounts
@@ -14,7 +15,7 @@ signal galaxy_finished_loading
 signal dayPassed
 
 #Frames(ish) per day
-var speeds = [2,0.5,0.1]
+var speeds = [1,0.25,0.01]
 var speed = 1
 var timePerDay
 var _deltaTime = 0
@@ -35,10 +36,10 @@ func makeSystem(_name:String,_starCount:int,_planetCount:int):
 	var system : Node3D = SolarScene.instantiate()
 	system.planetCount = _planetCount
 	system.starCount = _starCount
-	system.name = CoyName.GetStarName()
+	system.name = CoyUtils.GetStarName()
 	add_child(system)
 	
-	system.rotationSpeed = float(randi() % 100) / 100
+	
 	
 	CoyDebug.Log(str("System ",_name," created with ",_starCount," stars and ",_planetCount," planets"),CoyDebug.verbosityStates.ALL)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

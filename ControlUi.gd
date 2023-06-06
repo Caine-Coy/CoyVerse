@@ -1,6 +1,5 @@
 extends Control
 
-#Spaghetti Causing
 @onready var galacticController = get_tree().get_first_node_in_group("GalacticCore")
 
 #InfoBox

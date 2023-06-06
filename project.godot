@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CoyDebug="*res://Utility/Autoloaded/CoyDebug.gd"
-CoyName="*res://Utility/Autoloaded/CoyName.gd"
+CoyUtils="*res://Utility/Autoloaded/CoyUtils.gd"
 CoyFile="*res://Utility/Autoloaded/CoyFile.gd"
 
 [dotnet]

@@ -26,6 +26,7 @@ func makeStar(radius):
 	
 	add_child(starRoot)
 	star = starRoot.get_child(0)
+	star.orbitalSpeed = 0
 	star.add_to_group("Star")
 	star.name = name
 
@@ -36,13 +37,18 @@ func makePlanet(planetNum):
 	planet.add_to_group(name)
 	planet.add_to_group("Planet")
 	planets.append(planet)
+	
+	planet.SetRandomPlanetType()
+	planet.distanceFromStar = (galaxyController.SCALE * planetNum) + (starRadius*4)
+	planet.orbitalPeriod = planetNum+1 * 121
+	planet.orbitalSpeed = planet.orbitalPeriod/(planetNum+1) / 100.0
+	
 	star.add_child(planetBary)
 	
-	planetBary.name = str(name," ",CoyName.IntToRoman(planetNum+1))
-	planet.name = str(name," ",CoyName.IntToRoman(planetNum+1))
-	planet.SetRandomPlanetType()
-	planet.position.z = -((galaxyController.SCALE * planetNum) + (starRadius*4))
-	planet.rotationSpeed = 0.01*planetNum
+	planetBary.name = str(name," ",CoyUtils.IntToRoman(planetNum+1))
+	planet.name = str(name," ",CoyUtils.IntToRoman(planetNum+1))
+	
+	planet.position.z = -(planet.distanceFromStar)
 	CoyDebug.Log(str("Made new planet ",planet.name," of type ", planet.planetType),CoyDebug.verbosityStates.ALL)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
