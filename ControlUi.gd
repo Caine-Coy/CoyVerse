@@ -1,7 +1,7 @@
 extends Control
 
 #Spaghetti Causing
-@onready var galacticController = get_parent().get_node("GalacticCore")
+@onready var galacticController = get_tree().get_first_node_in_group("GalacticCore")
 
 #InfoBox
 @onready var nameLabel = %InfoBox/ObjectName

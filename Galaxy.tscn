@@ -7,14 +7,15 @@
 [node name="SceneController" type="Node"]
 
 [node name="GalacticCore" type="Node3D" parent="." groups=["GalacticCore"]]
+unique_name_in_owner = true
 script = ExtResource("1_p65fk")
 
 [node name="CameraNode" parent="GalacticCore" instance=ExtResource("2_cgr84")]
 
-[node name="ControlUi" parent="." instance=ExtResource("3_c6yo2")]
+[node name="ControlUi" parent="GalacticCore/CameraNode" instance=ExtResource("3_c6yo2")]
 
-[connection signal="dayPassed" from="GalacticCore" to="ControlUi" method="_on_day_passed"]
+[connection signal="dayPassed" from="GalacticCore" to="GalacticCore/CameraNode/ControlUi" method="_on_day_passed"]
 [connection signal="galaxy_finished_loading" from="GalacticCore" to="GalacticCore/CameraNode" method="_on_galactic_core_galaxy_finished_loading"]
-[connection signal="update_infobox" from="GalacticCore/CameraNode" to="ControlUi" method="_on_update_infobox"]
-[connection signal="pause_button_pressed" from="ControlUi" to="GalacticCore" method="_on_pause_button_pressed"]
-[connection signal="play_button_pressed" from="ControlUi" to="GalacticCore" method="_on_play_button_pressed"]
+[connection signal="update_infobox" from="GalacticCore/CameraNode" to="GalacticCore/CameraNode/ControlUi" method="_on_update_infobox"]
+[connection signal="pause_button_pressed" from="GalacticCore/CameraNode/ControlUi" to="GalacticCore" method="_on_pause_button_pressed"]
+[connection signal="play_button_pressed" from="GalacticCore/CameraNode/ControlUi" to="GalacticCore" method="_on_play_button_pressed"]
